@@ -1,0 +1,34 @@
+{
+  "name": "@groweasy/api",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "nodemon --watch src --ext ts --exec ts-node src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.21.0",
+    "@groweasy/shared-types": "*",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "multer": "^1.4.5-lts.1",
+    "papaparse": "^5.4.1",
+    "pino": "^9.2.0",
+    "pino-http": "^10.1.0",
+    "uuid": "^14.0.1",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/multer": "^1.4.11",
+    "@types/papaparse": "^5.3.14",
+    "@types/uuid": "^10.0.0",
+    "nodemon": "^3.1.4",
+    "pino-pretty": "^11.2.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.3"
+  }
+}

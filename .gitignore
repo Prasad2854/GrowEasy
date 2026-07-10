@@ -1,0 +1,32 @@
+# Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+*.log
+
+# Next.js
+.next/
+out/
+build/
+dist/
+
+# Env files
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+*.env
+!*.env.example
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
+
+# Coverage
+coverage/
+.nyc_output/
