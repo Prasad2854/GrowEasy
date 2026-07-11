@@ -123,13 +123,15 @@ groweasy/
 
 - **Upload Screen**: Demonstrates drag-and-drop CSV upload.
 - <img width="1470" height="920" alt="image" src="https://github.com/user-attachments/assets/24e8aa24-b0ac-4ce4-89f0-f6a0e943adc4" />
-
 - **Mapping Screen**: Shows AI auto-mapped fields alongside the data preview table.
 - <img width="1470" height="921" alt="image" src="https://github.com/user-attachments/assets/c62c9abe-3bed-4923-8c18-2059c4728760" />
-- 
-
+- <img width="1470" height="923" alt="image" src="https://github.com/user-attachments/assets/c96cb8d3-30d9-4c8e-a1ee-b28e71789e41" />
 - **Progress Screen**: Displays real-time background processing status.
+- <img width="1470" height="920" alt="image" src="https://github.com/user-attachments/assets/2f385829-67df-4254-b280-b1046af987f8" />
 - **Results Screen**: Shows the finalized TanStack data table with export options.
+- <img width="1470" height="922" alt="image" src="https://github.com/user-attachments/assets/b109d38e-bfaa-4b11-b2ea-c57a6f1352e4" />
+- **Output Json File**:
+- <img width="1470" height="919" alt="image" src="https://github.com/user-attachments/assets/0749630d-d74e-4cfd-bd2c-2149eb007c76" />
 
 ## Future Improvements
 
