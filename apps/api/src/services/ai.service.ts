@@ -4,11 +4,19 @@ import { MappingResponseSchema, ColumnMapping } from '@groweasy/shared-types';
 import { logger } from '../utils/logger';
 
 const genAI = new GoogleGenerativeAI(env.GEMINI_API_KEY);
-const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
+const model = genAI.getGenerativeModel({ model: 'gemini-flash-latest' });
 
-export const generateMapping = async (headers: string[], sampleRows: any[]): Promise<ColumnMapping[]> => {
-  try {
-    const prompt = `
+const extractJson = (text: string): string => {
+  const firstBrace = text.indexOf('{');
+  const lastBrace = text.lastIndexOf('}');
+  if (firstBrace !== -1 && lastBrace !== -1 && lastBrace > firstBrace) {
+    return text.substring(firstBrace, lastBrace + 1);
+  }
+  return text; // Fallback to raw text if no braces found
+};
+
+export const generateMapping = async (headers: string[], sampleRows: any[], retries = 2): Promise<ColumnMapping[]> => {
+  const prompt = `
     You are an intelligent data mapping assistant.
     Your task is to map the uploaded CSV headers to our fixed CRM schema.
     
@@ -40,22 +48,34 @@ export const generateMapping = async (headers: string[], sampleRows: any[]): Pro
     - "csvColumn": The original string from the CSV headers.
     - "crmField": The closest matching CRM field from the list above, or null if there is no logical match.
     
-    Respond ONLY with valid JSON.
-    `;
+    Respond ONLY with valid JSON. Do not include markdown formatting or explanations.
+  `;
 
+  try {
     const result = await model.generateContent(prompt);
     const text = result.response.text();
     
-    // Clean up potential markdown formatting in response
-    const cleanedText = text.replace(/```json/g, '').replace(/```/g, '').trim();
+    // Clean up potential markdown formatting in response and extract JSON object
+    const jsonString = extractJson(text.replace(/```json/gi, '').replace(/```/g, '').trim());
     
-    const parsedData = JSON.parse(cleanedText);
+    const parsedData = JSON.parse(jsonString);
     const validated = MappingResponseSchema.parse(parsedData);
     
     return validated.mappings;
-  } catch (error) {
-    logger.error({ err: error }, 'Failed to generate AI mapping');
-    throw new Error('AI Mapping failed');
+  } catch (error: any) {
+    const errorDetails = {
+      message: error.message,
+      stack: error.stack,
+      promptSample: prompt.substring(0, 500) + '...',
+    };
+    logger.warn({ err: error, details: errorDetails }, `Failed to generate AI mapping. Retries left: ${retries}`);
+    
+    if (retries > 0) {
+      return generateMapping(headers, sampleRows, retries - 1);
+    }
+    
+    logger.error({ err: error, details: errorDetails }, 'Failed to generate AI mapping after all retries');
+    throw error; // Throw the actual error so the controller can return structured details
   }
 };
 
@@ -104,9 +124,10 @@ export const processBatch = async (rows: any[], mappings: ColumnMapping[], retri
 
     const result = await model.generateContent(prompt);
     const text = result.response.text();
-    const cleanedText = text.replace(/```json/g, '').replace(/```/g, '').trim();
     
-    const parsedData = JSON.parse(cleanedText);
+    const jsonString = extractJson(text.replace(/```json/gi, '').replace(/```/g, '').trim());
+    
+    const parsedData = JSON.parse(jsonString);
     const records = parsedData.records || [];
     
     return {
@@ -114,7 +135,7 @@ export const processBatch = async (rows: any[], mappings: ColumnMapping[], retri
       skipped: rows.length - records.length,
       records
     };
-  } catch (error) {
+  } catch (error: any) {
     if (retries > 0) {
       logger.warn(`AI batch process failed. Retrying... (${retries} retries left)`);
       await delay((4 - retries) * 1000); // Exponential-ish backoff: 1s, 2s, 3s

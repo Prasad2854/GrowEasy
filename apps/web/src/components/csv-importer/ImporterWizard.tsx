@@ -49,9 +49,28 @@ export function ImporterWizard() {
       setError(null);
       const data = await getAiMapping(jobId, headers, sampleRows);
       
-      // Merge AI mappings with existing ones (in case some were manually set or preserving structure)
+      // Merge AI mappings with existing ones by matching normalized CSV columns
       if (data.mappings) {
-        setMappings(data.mappings);
+        setMappings((prev) => {
+          return prev.map((item) => {
+            // Normalize for comparison: trim and lowercase
+            const normalizedOriginal = item.csvColumn.trim().toLowerCase();
+            
+            // Find a match in the AI response
+            const aiMatch = data.mappings.find(
+              (m: any) => m.csvColumn && m.csvColumn.trim().toLowerCase() === normalizedOriginal
+            );
+            
+            // If AI suggested a valid crmField, update it; otherwise keep existing
+            if (aiMatch && aiMatch.crmField) {
+              // Normalize the CRM field to match the exact exact lowercase value in CRM_FIELDS
+              const normalizedCrmField = aiMatch.crmField.trim().toLowerCase();
+              return { ...item, crmField: normalizedCrmField };
+            }
+            
+            return item;
+          });
+        });
       }
     } catch (err: any) {
       setError(err.message || 'AI mapping failed');

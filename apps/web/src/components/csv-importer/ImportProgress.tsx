@@ -27,6 +27,19 @@ export function ImportProgress({ jobId }: ImportProgressProps) {
     },
   });
 
+  const isCompleted = job?.status === 'completed';
+  const isFailed = job?.status === 'failed';
+
+  useEffect(() => {
+    if (isCompleted || isFailed) {
+      // Small delay so user sees 100% before redirect
+      const t = setTimeout(() => {
+        router.push(`/result/${jobId}`);
+      }, 1500);
+      return () => clearTimeout(t);
+    }
+  }, [isCompleted, isFailed, router, jobId]);
+
   if (isError) {
     return (
       <Card className="p-6 border-destructive/50 bg-destructive/10">
@@ -41,19 +54,6 @@ export function ImportProgress({ jobId }: ImportProgressProps) {
   if (!job) return null;
 
   const percentage = job.totalRows > 0 ? Math.round((job.processedRows / job.totalRows) * 100) : 0;
-  
-  const isCompleted = job.status === 'completed';
-  const isFailed = job.status === 'failed';
-
-  useEffect(() => {
-    if (isCompleted || isFailed) {
-      // Small delay so user sees 100% before redirect
-      const t = setTimeout(() => {
-        router.push(`/result/${jobId}`);
-      }, 1500);
-      return () => clearTimeout(t);
-    }
-  }, [isCompleted, isFailed, router, jobId]);
 
   return (
     <Card className="p-8">

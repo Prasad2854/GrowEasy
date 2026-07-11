@@ -22,8 +22,17 @@ export const handleAiMapping = async (req: Request, res: Response) => {
     ImportJobService.updateJob(jobId, { mappings });
 
     res.status(200).json({ mappings });
-  } catch (error) {
-    logger.error({ err: error }, 'Error in AI mapping controller');
-    res.status(500).json({ error: 'Failed to generate AI mapping' });
+  } catch (error: any) {
+    logger.error({ 
+      err: error,
+      url: req.originalUrl,
+      body: req.body,
+    }, 'Error in AI mapping controller');
+    
+    res.status(500).json({ 
+      success: false,
+      error: 'Failed to generate AI mapping',
+      details: error.message || String(error)
+    });
   }
 };

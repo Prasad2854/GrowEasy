@@ -90,3 +90,46 @@ Returns the real-time processing status (`pending`, `processing`, `completed`, `
 
 ### `GET /api/process/:jobId/result`
 Returns the finalized metrics (`imported`, `skipped`, `failed`) and the fully transformed CRM `records` array.
+
+## Folder Structure
+
+```
+groweasy/
+├── apps/
+│   ├── api/                # Express backend
+│   │   ├── src/
+│   │   │   ├── api/        # Controllers and Routes
+│   │   │   ├── config/     # Environment validation
+│   │   │   ├── services/   # Business logic (AI, CSV, Job processing)
+│   │   │   └── utils/      # Logger
+│   │   ├── Dockerfile
+│   │   └── package.json
+│   └── web/                # Next.js frontend
+│       ├── src/
+│       │   ├── app/        # Next.js App Router pages
+│       │   ├── components/ # React components (UI and Importer)
+│       │   └── lib/        # API client and utilities
+│       ├── Dockerfile
+│       └── package.json
+├── packages/
+│   └── shared-types/       # Zod schemas shared between frontend and backend
+│       └── src/index.ts
+├── docker-compose.yml
+├── render.yaml
+└── package.json
+```
+
+## Screenshots
+
+*(Add screenshots of the UI here)*
+- **Upload Screen**: Demonstrates drag-and-drop CSV upload.
+- **Mapping Screen**: Shows AI auto-mapped fields alongside the data preview table.
+- **Progress Screen**: Displays real-time background processing status.
+- **Results Screen**: Shows the finalized TanStack data table with export options.
+
+## Future Improvements
+
+- **WebSockets**: Replace HTTP polling with WebSockets or Server-Sent Events (SSE) for instant progress updates.
+- **Authentication**: Add JWT-based user authentication and attach import jobs to specific users.
+- **Database Persistence**: Move from in-memory job storage to PostgreSQL or Redis to persist job history across server restarts.
+- **Chunking Large Files**: Stream large CSV files directly to a cloud bucket (e.g., AWS S3) instead of buffering in memory.

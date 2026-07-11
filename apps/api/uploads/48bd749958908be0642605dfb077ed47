@@ -1,0 +1,106 @@
+ID,Age,Income,Satisfaction_Level,Gender,City,Purchase_Amount,Membership_Level,Last_Purchase_Days_Ago,Feedback
+C031,61,75000,1,Male,Los Angeles,510,gold,8,
+C066,64,75000,high,M,SF,970,Gold,289,bad
+C065,25,45000,six,female,New York,230,,119,bad
+C054,31,50000,,Male,LA,690,Bronze,82,average
+C046,68,90000,3,male,Los Angeles,410,Gold,145,Bad
+C095,38,999999,4,male,n/a,310,Bronze,83,Excellent
+C045,54,90000,six,female,n/a,490,silver,192,Bad
+C048,38,80000,,Female,newyork,190,Bronze,212,GOOD
+C011,28,70000,six,male,NY,10,Silver,229,
+C001,56,80000,1,F,NY,230,Platinum,173,Excellent
+C019,39,65000,high,male,n/a,230,,14,Bad
+C032,42,55000,4,Male,San Francisco,190,silver,122,
+C090,32,25000,3,Male,newyork,270,Bronze,259,Excellent
+C097,62,25000,high,Female,NY,90,gold,85,Excellent
+C078,21,60000,2,,LA,430,Silver,315,Bad
+C005,60,20000,5,female,New York,650,gold,303,GOOD
+C081,35,5000000,high,Male,Los Angeles,970,gold,98,Excellent
+C034,44,20000,high,male,LA,670,silver,164,bad
+C013,41,999999,six,M,n/a,790,,227,Bad
+C027,38,20000,six,M,,330,Silver,224,Excellent
+C100,,20000,,,n/a,490,Platinum,1,bad
+C056,26,90000,2,F,,710,Platinum,197,GOOD
+C023,61,60000,2,Male,NY,,Silver,259,average
+C077,59,55000,1,M,Los Angeles,490,silver,342,bad
+C045,54,90000,six,female,n/a,490,silver,192,Bad
+C073,21,60000,,M,San Francisco,330,gold,341,average
+C016,57,30000,3,Female,Los Angeles,870,Silver,47,GOOD
+C043,69,50000,2,M,newyork,570,gold,41,Bad
+C041,61,40000,4,female,San Francisco,890,Silver,220,GOOD
+C010,40,55000,,Male,newyork,50,gold,252,
+C086,53,999999,3,,LA,230,Gold,197,Good
+C012,28,5000000,4,Male,,650,Silver,164,Bad
+C046,68,90000,3,male,Los Angeles,410,Gold,145,Bad
+C079,120,40000,1,male,LA,250,Platinum,283,bad
+C029,29,40000,,,San Francisco,150,Platinum,358,Good
+C080,46,20000,,F,SF,370,Platinum,177,GOOD
+C006,25,50000,4,F,,,,149,Good
+C063,24,65000,2,F,n/a,630,Platinum,999,Excellent
+C057,43,70000,,M,LA,350,Platinum,303,Good
+C040,68,20000,3,female,Los Angeles,990,Silver,28,
+C036,45,40000,5,female,n/a,810,Silver,136,GOOD
+C017,41,20000,1,Female,Los Angeles,570,gold,233,Excellent
+C067,52,75000,2,female,LA,250,Silver,65,average
+C035,59,30000,,male,New York,,gold,90,bad
+C008,56,20000,,male,SF,730,,213,Bad
+C044,20,60000,3,male,SF,710,gold,228,GOOD
+C069,34,50000,six,female,SF,490,Gold,224,Good
+C070,53,20000,4,male,newyork,690,,239,Bad
+C028,50,95000,,F,San Francisco,510,Silver,272,Good
+C020,,50000,,M,newyork,610,gold,143,average
+C085,27,60000,,M,San Francisco,370,Bronze,6,
+C026,19,25000,3,female,newyork,450,Bronze,330,GOOD
+C074,19,30000,1,M,,970,gold,282,bad
+C050,56,50000,4,female,n/a,170,Platinum,240,Excellent
+C014,,55000,3,Female,SF,190,silver,147,Bad
+C025,55,75000,high,Male,San Francisco,690,Platinum,12,GOOD
+C004,32,80000,2,F,n/a,650,Platinum,317,average
+C018,20,40000,six,female,New York,250,Gold,305,Excellent
+C039,64,30000,4,female,SF,0,Gold,178,Excellent
+C009,36,75000,high,female,SF,230,gold,203,average
+C082,43,65000,4,F,New York,710,,105,Excellent
+C007,38,60000,2,female,San Francisco,850,Bronze,80,Good
+C068,31,70000,3,M,San Francisco,450,Silver,146,Bad
+C037,33,90000,3,,LA,130,Bronze,186,Bad
+C092,31,999999,,,n/a,99999,Platinum,53,average
+C084,51,90000,5,M,SF,810,,311,Excellent
+C055,67,80000,six,M,SF,950,gold,256,Good
+C051,35,999999,1,Male,newyork,470,Bronze,46,Excellent
+C071,67,20000,,F,newyork,810,silver,177,Good
+C047,24,65000,4,male,NY,710,gold,201,Bad
+C084,51,90000,5,M,SF,810,,311,Excellent
+C062,64,25000,1,Male,,450,gold,251,Bad
+C054,31,50000,,Male,LA,690,Bronze,82,average
+C098,35,25000,,,New York,690,silver,78,bad
+C042,-5,85000,3,female,Los Angeles,210,gold,357,average
+C059,19,80000,3,F,New York,770,Platinum,312,average
+C049,26,5000000,six,M,New York,730,silver,220,
+C091,25,30000,3,Female,New York,610,,23,GOOD
+C058,,35000,1,male,New York,970,silver,10,
+C076,120,45000,4,female,New York,950,Platinum,217,GOOD
+C033,66,30000,3,F,San Francisco,510,,348,
+C099,64,40000,1,female,Los Angeles,230,Silver,,Bad
+C060,37,50000,4,male,NY,630,,286,GOOD
+C064,61,80000,six,F,LA,730,silver,5,Good
+C089,65,50000,1,Female,Los Angeles,550,silver,358,
+C038,32,85000,4,female,LA,70,Silver,316,Excellent
+C030,39,30000,1,male,New York,570,Bronze,156,
+C094,57,999999,3,Female,Los Angeles,930,Bronze,202,Good
+C002,69,60000,3,male,NY,990,Gold,160,bad
+C053,42,40000,,,LA,970,,253,Bad
+C022,41,50000,4,F,NY,30,Gold,54,GOOD
+C003,46,90000,high,Male,New York,690,gold,173,bad
+C024,47,55000,high,F,SF,990,,144,bad
+C088,48,75000,1,male,NY,130,Platinum,133,
+C096,33,999999,,female,SF,0,silver,145,Excellent
+C075,23,50000,4,Male,LA,390,Silver,63,Bad
+C087,31,999999,six,Male,Los Angeles,170,gold,351,
+C083,61,75000,5,,LA,230,Bronze,99,Excellent
+C021,19,60000,5,Male,SF,910,Gold,1,Good
+C061,45,5000000,1,Male,San Francisco,470,Gold,242,
+C072,57,80000,2,Male,LA,590,Gold,267,average
+C015,53,30000,,female,,850,,20,GOOD
+C093,40,40000,,female,LA,370,Bronze,165,average
+C052,21,35000,1,F,SF,690,,35,
+C071,67,20000,,F,newyork,810,silver,177,Good
