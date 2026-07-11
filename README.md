@@ -1,4 +1,4 @@
-# GrowEasy AI-Powered CSV Importer
+<img width="550" height="450" alt="image" src="https://github.com/user-attachments/assets/b66a3801-4bcc-4434-bd02-420852193f59" /># GrowEasy AI-Powered CSV Importer
 
 A production-ready application for importing, previewing, and mapping arbitrary CSV data into a strict CRM schema using the Google Gemini AI.
 
@@ -121,9 +121,13 @@ groweasy/
 
 ## Screenshots
 
-*(Add screenshots of the UI here)*
 - **Upload Screen**: Demonstrates drag-and-drop CSV upload.
+- <img width="1470" height="920" alt="image" src="https://github.com/user-attachments/assets/24e8aa24-b0ac-4ce4-89f0-f6a0e943adc4" />
+
 - **Mapping Screen**: Shows AI auto-mapped fields alongside the data preview table.
+- <img width="1470" height="921" alt="image" src="https://github.com/user-attachments/assets/c62c9abe-3bed-4923-8c18-2059c4728760" />
+- 
+
 - **Progress Screen**: Displays real-time background processing status.
 - **Results Screen**: Shows the finalized TanStack data table with export options.
 
