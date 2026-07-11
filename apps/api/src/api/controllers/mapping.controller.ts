@@ -29,10 +29,20 @@ export const handleAiMapping = async (req: Request, res: Response) => {
       body: req.body,
     }, 'Error in AI mapping controller');
     
+    const errorMessage = error.message || String(error);
+    
+    if (errorMessage.includes('429') || errorMessage.includes('quota')) {
+      return res.status(429).json({ 
+        success: false,
+        error: 'Google Gemini AI rate limit exceeded. Please wait 30 seconds and try again.',
+        details: errorMessage
+      });
+    }
+
     res.status(500).json({ 
       success: false,
       error: 'Failed to generate AI mapping',
-      details: error.message || String(error)
+      details: errorMessage
     });
   }
 };

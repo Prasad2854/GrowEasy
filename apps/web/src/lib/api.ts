@@ -20,7 +20,10 @@ export const getAiMapping = async (jobId: string, headers: string[], sampleRows:
     body: JSON.stringify({ jobId, headers, sampleRows }),
   });
   
-  if (!res.ok) throw new Error('AI Mapping failed');
+  if (!res.ok) {
+    const errorData = await res.json().catch(() => ({}));
+    throw new Error(errorData.error || 'AI Mapping failed');
+  }
   return res.json();
 };
 
