@@ -1,4 +1,4 @@
-GrowEasy AI-Powered CSV Importer
+## GrowEasy AI-Powered CSV Importer
 
 A production-ready application for importing, previewing, and mapping arbitrary CSV data into a strict CRM schema using the Google Gemini AI.
 
