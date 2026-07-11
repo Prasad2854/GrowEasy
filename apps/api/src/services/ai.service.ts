@@ -1,10 +1,9 @@
-import { GoogleGenerativeAI } from '@google/generative-ai';
+import Groq from 'groq-sdk';
 import { env } from '../config/env';
 import { MappingResponseSchema, ColumnMapping } from '@groweasy/shared-types';
 import { logger } from '../utils/logger';
 
-const genAI = new GoogleGenerativeAI(env.GEMINI_API_KEY);
-const model = genAI.getGenerativeModel({ model: 'gemini-flash-latest' });
+const groq = new Groq({ apiKey: env.GROQ_API_KEY });
 
 const extractJson = (text: string): string => {
   const firstBrace = text.indexOf('{');
@@ -52,8 +51,11 @@ export const generateMapping = async (headers: string[], sampleRows: any[], retr
   `;
 
   try {
-    const result = await model.generateContent(prompt);
-    const text = result.response.text();
+    const chatCompletion = await groq.chat.completions.create({
+      messages: [{ role: 'user', content: prompt }],
+      model: 'llama-3.3-70b-versatile',
+    });
+    const text = chatCompletion.choices[0]?.message?.content || "";
     
     // Clean up potential markdown formatting in response and extract JSON object
     const jsonString = extractJson(text.replace(/```json/gi, '').replace(/```/g, '').trim());
@@ -122,8 +124,11 @@ export const processBatch = async (rows: any[], mappings: ColumnMapping[], retri
     Respond ONLY with valid JSON.
     `;
 
-    const result = await model.generateContent(prompt);
-    const text = result.response.text();
+    const chatCompletion = await groq.chat.completions.create({
+      messages: [{ role: 'user', content: prompt }],
+      model: 'llama-3.3-70b-versatile',
+    });
+    const text = chatCompletion.choices[0]?.message?.content || "";
     
     const jsonString = extractJson(text.replace(/```json/gi, '').replace(/```/g, '').trim());
     

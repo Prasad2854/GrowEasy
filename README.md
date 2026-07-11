@@ -1,9 +1,9 @@
 ## GrowEasy AI-Powered CSV Importer
 
-A production-ready application for importing, previewing, and mapping arbitrary CSV data into a strict CRM schema using the Google Gemini AI.
+A production-ready application for importing, previewing, and mapping arbitrary CSV data into a strict CRM schema using the Google Groq AI.
 
 ## Features
-- **Smart Data Mapping**: Automatically suggests mappings from your messy CSV columns to the CRM schema using Gemini AI.
+- **Smart Data Mapping**: Automatically suggests mappings from your messy CSV columns to the CRM schema using Groq AI.
 - **Robust Batch Processing**: Processes full CSV files in chunks of 20 with an enforced concurrency limit of 3 to maximize throughput and prevent rate limits.
 - **Data Cleansing**: Enforces strict rules (e.g. skipping rows with no email/mobile, appending multiple emails to notes, normalizing statuses).
 - **Resilience**: Exponential backoff retry logic for AI API failures.
@@ -23,7 +23,7 @@ This project is structured as a **Monorepo** using npm workspaces.
 ### Prerequisites
 - Node.js (v20+)
 - npm
-- Google Gemini API Key
+- Google Groq API Key
 
 ### Installation
 1. Clone the repository and install dependencies:
@@ -31,7 +31,7 @@ This project is structured as a **Monorepo** using npm workspaces.
    npm install
    ```
 2. Configure environment variables:
-   - Copy `apps/api/.env.example` to `apps/api/.env` and add your `GEMINI_API_KEY`.
+   - Copy `apps/api/.env.example` to `apps/api/.env` and add your `GROQ_API_KEY`.
    - *(Optional)* Copy `apps/web/.env.example` to `apps/web/.env`.
 
 ### Running the App
@@ -61,14 +61,14 @@ The Express backend includes a `render.yaml` blueprint and a production-ready `D
 1. Connect your GitHub repository to Render.
 2. Render will automatically detect the `render.yaml` file (or you can use the Docker environment).
 3. Add the following environment variables in the Render dashboard:
-   - `GEMINI_API_KEY`: Your secret Gemini key.
+   - `GROQ_API_KEY`: Your secret Groq key.
    - `FRONTEND_URL`: The URL of your deployed Vercel app (e.g., `https://groweasy-web.vercel.app`) to strictly configure CORS.
 4. Deploy.
 
 ### Docker Compose
 You can also run the full production build locally via Docker Compose:
 ```bash
-GEMINI_API_KEY=your_key_here docker-compose up --build
+GROQ_API_KEY=your_key_here docker-compose up --build
 ```
 
 ## API Documentation
@@ -79,7 +79,7 @@ Returns a `jobId`, extracted `headers`, and `sampleRows` for mapping.
 
 ### `POST /api/mapping`
 Accepts `jobId`, `headers`, and `sampleRows`.
-Calls Gemini to return AI-suggested mappings matching the CRM schema.
+Calls Groq to return AI-suggested mappings matching the CRM schema.
 
 ### `POST /api/process`
 Accepts `jobId` and finalized `mappings`.
