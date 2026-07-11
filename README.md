@@ -1,4 +1,4 @@
-<img width="550" height="450" alt="image" src="https://github.com/user-attachments/assets/b66a3801-4bcc-4434-bd02-420852193f59" /># GrowEasy AI-Powered CSV Importer
+GrowEasy AI-Powered CSV Importer
 
 A production-ready application for importing, previewing, and mapping arbitrary CSV data into a strict CRM schema using the Google Gemini AI.
 
